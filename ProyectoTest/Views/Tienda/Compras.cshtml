@@ -68,7 +68,7 @@
                                                 $("<img>").attr({ "src": "data:image/" + dc.oProducto.extension + ";base64," + dc.oProducto.base64,"width":"50"}),
                                                 $("<div>").addClass("p-2 bd-highlight").text(dc.oProducto.Nombre),
                                                 $("<div>").addClass("p-2 bd-highlight ms-auto").text("Cantidad: " + dc.Cantidad),
-                                                $("<div>").addClass("p-2 bd-highlight").text("Total: $/. " + dc.Total)
+                                                $("<div>").addClass("p-2 bd-highlight").text("Total: $ " + dc.Total)
                                             )
                                 accordion_body.append(d_flex);
 
@@ -77,7 +77,7 @@
                             accordion_body.append(
                                 $("<div>").addClass("d-flex justify-content-between bg-light border").append(
                                     $("<div>").addClass("p-2 bd-highlight").text("Total Importe:"),
-                                    $("<div>").addClass("p-2 bd-highlight").text("$/. " + v.Total)
+                                    $("<div>").addClass("p-2 bd-highlight").text("$ " + v.Total)
                                 )
                             );
                             

@@ -142,7 +142,7 @@
                                             $("<div>").addClass("ml-2").append(
                                                 $("<span>").addClass("font-weight-bold d-block").text(item.oProducto.oMarca.Descripcion),
                                                 $("<span>").addClass("spec").text(item.oProducto.Nombre),
-                                                $("<span>").addClass("float-end").text("Precio : $./" + item.oProducto.Precio )
+                                                $("<span>").addClass("float-end").text("Precio : $ " + item.oProducto.Precio )
                                             )
                                         ),
                                         $("<div>").addClass("col-3").append(
@@ -235,7 +235,7 @@
                 var precio = parseFloat($(this).val()) * parseFloat($(this).data("precio"));
                 total = total + precio;
             });
-            $("#totalPagar").text("$/. " + total.toString());
+            $("#totalPagar").text("$ " + total.toString());
         }
         function obtenerCantidadProductos() {
             $("#cantidad-articulos").text(" " + $("#productos-seleccionados > div.card").length.toString() + " ");

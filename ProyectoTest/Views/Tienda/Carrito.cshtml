@@ -235,7 +235,7 @@
                 var precio = parseFloat($(this).val()) * parseFloat($(this).data("precio"));
                 total = total + precio;
             });
-            $("#totalPagar").text("S/. " + total.toString());
+            $("#totalPagar").text("$/. " + total.toString());
         }
         function obtenerCantidadProductos() {
             $("#cantidad-articulos").text(" " + $("#productos-seleccionados > div.card").length.toString() + " ");

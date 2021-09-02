@@ -13,7 +13,7 @@ namespace ProyectoTest.Controllers
     public class TiendaController : Controller
     {
         private static Usuario oUsuario;
-        //VISTA
+     
         public ActionResult Index()
         {
             if (Session["Usuario"] == null)
@@ -24,39 +24,10 @@ namespace ProyectoTest.Controllers
             return View();
         }
 
-        //VISTA
-        public ActionResult Producto(int idproducto = 0)
-        {
-            if (Session["Usuario"] == null)
-                return RedirectToAction("Index", "Login");
-            else
-                oUsuario = (Usuario)Session["Usuario"];
+       
+        
 
-            Producto oProducto = new Producto();
-            List<Producto> oLista = new List<Producto>();
-
-            oLista = ProductoLogica.Instancia.Listar();
-            oProducto = (from o in oLista
-                      where o.IdProducto == idproducto
-                      select new Producto()
-                      {
-                          IdProducto = o.IdProducto,
-                          Nombre = o.Nombre,
-                          Descripcion = o.Descripcion,
-                          oMarca = o.oMarca,
-                          oCategoria = o.oCategoria,
-                          Precio = o.Precio,
-                          Stock = o.Stock,
-                          RutaImagen = o.RutaImagen,
-                          base64 = utilidades.convertirBase64(Server.MapPath(o.RutaImagen)),
-                          extension = Path.GetExtension(o.RutaImagen).Replace(".", ""),
-                          Activo = o.Activo
-                      }).FirstOrDefault();
-
-            return View(oProducto);
-        }
-
-        //VISTA
+        
         public ActionResult Carrito()
         {
             if (Session["Usuario"] == null)
@@ -67,7 +38,7 @@ namespace ProyectoTest.Controllers
             return View();
         }
 
-        //VISTA
+       
         public ActionResult Compras()
         {
             if (Session["Usuario"] == null)
@@ -78,47 +49,6 @@ namespace ProyectoTest.Controllers
             return View();
         }
 
-
-
-
-
-
-        [HttpPost]
-        public JsonResult ListarProducto(int idcategoria = 0)
-        {
-            List<Producto> oLista = new List<Producto>();
-
-            oLista = ProductoLogica.Instancia.Listar();
-            oLista = (from o in oLista
-                      select new Producto()
-                      {
-                          IdProducto = o.IdProducto,
-                          Nombre = o.Nombre,
-                          Descripcion = o.Descripcion,
-                          oMarca = o.oMarca,
-                          oCategoria = o.oCategoria,
-                          Precio = o.Precio,
-                          Stock = o.Stock,
-                          RutaImagen = o.RutaImagen,
-                          base64 = utilidades.convertirBase64(Server.MapPath(o.RutaImagen)),
-                          extension = Path.GetExtension(o.RutaImagen).Replace(".", ""),
-                          Activo = o.Activo
-                      }).ToList();
-
-            if (idcategoria != 0){
-                oLista = oLista.Where(x => x.oCategoria.IdCategoria == idcategoria).ToList() ;
-            }
-
-            return Json(new { data = oLista }, JsonRequestBehavior.AllowGet);
-        }
-
-        [HttpGet]
-        public JsonResult ListarCategoria()
-        {
-            List<Categoria> oLista = new List<Categoria>();
-            oLista = CategoriaLogica.Instancia.Listar();
-            return Json(new { data = oLista }, JsonRequestBehavior.AllowGet);
-        }
 
         [HttpPost]
         public JsonResult InsertarCarrito(Carrito oCarrito)

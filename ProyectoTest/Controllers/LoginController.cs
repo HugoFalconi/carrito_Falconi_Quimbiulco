@@ -11,7 +11,7 @@ namespace ProyectoTest.Controllers
 {
     public class LoginController : Controller
     {
-        // GET: Login
+        
         public ActionResult Index()
         {
             return View();
@@ -40,14 +40,13 @@ namespace ProyectoTest.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
-            else {
+            else
+            {
                 return RedirectToAction("Index", "Tienda");
             }
-
-            
         }
 
-        // GET: Login
+
         public ActionResult Registrarse()
         {
             return View(new Usuario() { Nombres= "",Apellidos= "",Correo="",Contrasena="",ConfirmarContrasena="" });

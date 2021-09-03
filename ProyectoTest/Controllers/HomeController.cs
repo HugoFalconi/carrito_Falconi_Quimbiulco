@@ -60,20 +60,7 @@ namespace ProyectoTest.Controllers
             oLista = CategoriaLogica.Instancia.Listar();
             return Json(new { data = oLista }, JsonRequestBehavior.AllowGet);
         }
-        [HttpPost]
-        public JsonResult GuardarCategoria(Categoria objeto)
-        {
-            bool respuesta = false;
-            respuesta = (objeto.IdCategoria == 0) ? CategoriaLogica.Instancia.Registrar(objeto) : CategoriaLogica.Instancia.Modificar(objeto);
-            return Json(new { resultado = respuesta }, JsonRequestBehavior.AllowGet);
-        }
-        [HttpPost]
-        public JsonResult EliminarCategoria(int id)
-        {
-            bool respuesta = false;
-            respuesta = CategoriaLogica.Instancia.Eliminar(id);
-            return Json(new { resultado = respuesta }, JsonRequestBehavior.AllowGet);
-        }
+        
 
 
 
@@ -84,20 +71,7 @@ namespace ProyectoTest.Controllers
             oLista = MarcaLogica.Instancia.Listar();
             return Json(new { data = oLista }, JsonRequestBehavior.AllowGet);
         }
-        [HttpPost]
-        public JsonResult GuardarMarca(Marca objeto)
-        {
-            bool respuesta = false;
-            respuesta = (objeto.IdMarca == 0) ? MarcaLogica.Instancia.Registrar(objeto) : MarcaLogica.Instancia.Modificar(objeto);
-            return Json(new { resultado = respuesta }, JsonRequestBehavior.AllowGet);
-        }
-        [HttpPost]
-        public JsonResult EliminarMarca(int id)
-        {
-            bool respuesta = false;
-            respuesta = MarcaLogica.Instancia.Eliminar(id);
-            return Json(new { resultado = respuesta }, JsonRequestBehavior.AllowGet);
-        }
+        
 
 
 
